@@ -9,6 +9,7 @@ registerWidget("lucianoHUD_armorBar")
 function lucianoHUD_armorBar:draw()
     if not shouldShowHUD() then
     return end
+
     local player = getPlayer()
     local ap = player.armor
 
@@ -26,7 +27,9 @@ function lucianoHUD_armorBar:draw()
 
     if ap == 0 then
         armorBar_h = 0;
-    elseif ap > 50 then
+    elseif ap <= 50 then
+        armorBar_color = green;
+    elseif ap <= 150 then
         armorBar_color = yellow;
     elseif ap > 150 then
         armorBar_color = red;
