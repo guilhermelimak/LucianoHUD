@@ -66,7 +66,7 @@ function lucianoHUD_healthBar:draw()
     end
 
     -- Movement
-    nvgTranslate(- player.speed / 40, player.speed / 25);
+    nvgTranslate(- player.speed / 70, player.velocity.y / 750 * 5);
 
     -- Health number
     nvgFontSize(48)

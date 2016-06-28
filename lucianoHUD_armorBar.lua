@@ -35,7 +35,7 @@ function lucianoHUD_armorBar:draw()
         armorBar_color = red;
     end
 
-    nvgTranslate(player.speed / 40, player.speed / 25);
+    nvgTranslate(player.speed / 70, player.velocity.y / 750 * 5);
 
     -- Armor numbers
     nvgFontSize(48)
