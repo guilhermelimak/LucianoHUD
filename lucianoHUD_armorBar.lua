@@ -13,18 +13,21 @@ function lucianoHUD_armorBar:draw()
     local player = getPlayer()
     local ap = player.armor
 
+    -- Armor bar properties
     local armorBar_x = -350;
     local armorBar_y = -100;
     local armorBar_w = 2;
     local armorBar_h = 60;
     local armorBar_color = green;
 
+    -- Armor bar stroke properties
     local armorBarStroke_x = -350;
     local armorBarStroke_y = -100;
     local armorBarStroke_w = 2;
     local armorBarStroke_h = 60;
     local armorBarStroke_color = green;
 
+    -- Change bar color based on armor
     if ap == 0 then
         armorBar_h = 0;
     elseif ap <= 50 then

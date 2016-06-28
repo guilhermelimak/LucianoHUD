@@ -9,16 +9,19 @@ function lucianoHUD_weaponIndicator:draw()
     if not shouldShowHUD() then
     return end
 
+    -- Get player object
     local player = getPlayer()
-    local wp_svgName = "internal/ui/icons/weapon" .. player.weaponIndexSelected;
 
+    -- Get current weapon
     local weapon_index = player.weaponIndexSelected;
     local weapon = player.weapons[weapon_index];
 
+    -- Get player ammo
     local plr_ammo = weapon.ammo;
     local max_ammo = weapon.maxAmmo;
     local weapon_aliases = {}
 
+    -- Set aliases
     weapon_aliases["Rocket Launcher"] = "RCKT";
     weapon_aliases["Ion Cannon"] = "ION";
     weapon_aliases["Plasma Rifle"] = "PLSM";
@@ -28,10 +31,14 @@ function lucianoHUD_weaponIndicator:draw()
     weapon_aliases["Melee"] = "MLEE";
     weapon_aliases["Shotgun"] = "STGN";
 
-    -- Armor numbers
+    -- Print weapon name and ammo
     nvgBeginPath();
     nvgFontSize(48)
+    nvgStrokeWidth(30);
+    nvgStroke();
     nvgFillColor(weapon.color);
     nvgFill();
-    nvgText(-35, -50, weapon_aliases[weapon.name]);
+    nvgText(0, -50, weapon_aliases[weapon.name]);
+    nvgText(-57, -100, plr_ammo);
 end
+    -- local wp_svgName = "internal/ui/icons/weapon" .. player.weaponIndexSelected;
