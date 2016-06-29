@@ -1,5 +1,6 @@
 require "base/internal/ui/reflexcore"
 require "base/internal/ui/gamestrings"
+require "lucianoHUD_core"
 
 lucianoHUD_weaponIndicator = {}
 
@@ -32,6 +33,7 @@ function lucianoHUD_weaponIndicator:draw()
     weapon_aliases["Shotgun"] = "STGN";
 
     -- Print weapon name and ammo
+    nvgFontFace(FONT_FACE)
     nvgBeginPath();
     nvgFontSize(48)
     nvgStrokeWidth(30);

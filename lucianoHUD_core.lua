@@ -1,4 +1,9 @@
-green = Color(30,255,30);
-yellow = Color(255,255,30)
-red = Color(255,30,30)
-megaBlue = Color(30,30,255);
+GREEN = Color(30,255,30);
+YELLOW = Color(255,255,30)
+RED = Color(255,30,30)
+MEGA_BLUE = Color(30,30,255);
+WHITE = Color(0,0,0,255)
+
+BAR_STROKE_WIDTH = 4
+
+FONT_FACE = "redrocket"

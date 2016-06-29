@@ -1,5 +1,6 @@
 require "base/internal/ui/reflexcore"
 require "base/internal/ui/gamestrings"
+require "lucianoHUD_core"
 
 lucianoHUD_speedometer = {}
 
@@ -28,7 +29,7 @@ function lucianoHUD_speedometer:draw()
     -- Colors
     local barInnerColor = Color(255,0,0,255)
     local barOuterColor = Color(0,255,0,255) -- nvgStrokeRadialGradient is bugged so this is ignored for now
-    local frameColor = Color(0,0,0,128)
+    local frameColor = Color(0,0,0,50)
 
     -- Find player
     local player = getPlayer()
@@ -54,7 +55,7 @@ function lucianoHUD_speedometer:draw()
     nvgBeginPath();
     nvgArc(0, 0, barRadius, barStart, barEnd, barFillDrection)
     nvgStrokeWidth(barStrokeWidth)
-    nvgStrokeColor(weapon.color)
+    nvgStrokeColor(WHITE)
     nvgStroke()
 
     -- Draw numbers
@@ -63,5 +64,7 @@ function lucianoHUD_speedometer:draw()
 
     nvgFontBlur(0);
     nvgFillColor(Color(255,255,255,255));
+    nvgFontFace(FONT_FACE)
+    nvgFontSize(30)
     nvgText(0, 0, math.floor(player.speed));
 end

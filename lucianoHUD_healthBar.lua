@@ -21,14 +21,14 @@ function lucianoHUD_healthBar:draw()
     local healthBar1_y = -100;
     local healthBar1_w = 2;
     local healthBar1_h = 60;
-    local healthBar1_color = green;
+    local healthBar1_color = GREEN;
 
     -- BAR 1 Stroke
     local healthBar1Stroke_x = x_offset;
     local healthBar1Stroke_y = -100;
     local healthBar1Stroke_w = 2;
     local healthBar1Stroke_h = 60;
-    local healthBar1Stroke_color = green;
+    local healthBar1Stroke_color = GREEN;
 
     -- BAR 2
     local healthBar2_hp = 0;
@@ -36,27 +36,27 @@ function lucianoHUD_healthBar:draw()
     local healthBar2_y = -30;
     local healthBar2_w = 2;
     local healthBar2_h = 20;
-    local healthBar2_color = megaBlue
+    local healthBar2_color =MEGA_BLUE
 
     -- BAR 2 Stroke
     local healthBar2Stroke_x = x_offset;
     local healthBar2Stroke_y = -30;
     local healthBar2Stroke_w = 2;
     local healthBar2Stroke_h = 20;
-    local healthBar2Stroke_color = megaBlue;
+    local healthBar2Stroke_color = MEGA_BLUE;
 
     -- change bar colors according to the player hp
     if hp > 100 then
         healthBar1_hp = 100;
         healthBar2_hp = hp - 100;
-        healthBar1_color = megaBlue;
+        healthBar1_color = MEGA_BLUE;
     elseif hp < 75 then
-        healthBar1_color = yellow;
+        healthBar1_color = YELLOW;
         healthBar1_hp = hp;
         healthBar2_hp = 0;
     elseif hp < 30 then
         consolePrint(hp)
-        healthBar1_color = red;
+        healthBar1_color = RED;
         healthBar1_hp = hp;
         healthBar2_hp = 0;
     end
@@ -69,6 +69,7 @@ function lucianoHUD_healthBar:draw()
     nvgTranslate(- player.speed / 70, player.velocity.y / 750 * 5);
 
     -- Health number
+    nvgFontFace(FONT_FACE)
     nvgFontSize(48)
     nvgText(healthBar1_x + 10, healthBar1_y - 40, hp);
 
@@ -87,7 +88,8 @@ function lucianoHUD_healthBar:draw()
             healthBar1Stroke_y,
             healthBar1Stroke_w * 100,
             healthBar1Stroke_h);
-    nvgStrokeWidth(2);
+    nvgStrokeColor(WHITE)
+    nvgStrokeWidth(BAR_STROKE_WIDTH);
     nvgStroke();
 
     -- Bar 2 (Mega health)
@@ -105,6 +107,7 @@ function lucianoHUD_healthBar:draw()
             healthBar2Stroke_y - 100,
             healthBar2Stroke_w * 100,
             healthBar2Stroke_h);
-    nvgStrokeWidth(2);
+    nvgStrokeColor(WHITE)
+    nvgStrokeWidth(BAR_STROKE_WIDTH);
     nvgStroke();
 end
