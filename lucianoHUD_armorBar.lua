@@ -38,6 +38,7 @@ function lucianoHUD_armorBar:draw()
         armorBar_color = RED;
     end
 
+    -- Move hud based on player speed
     nvgTranslate(player.speed / 70, player.velocity.y / 750 * 5);
 
     -- Armor numbers
