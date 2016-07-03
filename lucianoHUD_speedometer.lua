@@ -20,7 +20,7 @@ function lucianoHUD_speedometer:draw()
 
     -- Options
     local barRadius = 50
-    local barStrokeWidth = 20
+    local barStrokeWidth = 10
     local barStart = barTop
     local barFillDrection = NVG_CW
     local framePadding = 5
@@ -29,13 +29,13 @@ function lucianoHUD_speedometer:draw()
     -- Colors
     local barInnerColor = Color(255,0,0,255)
     local barOuterColor = Color(0,255,0,255) -- nvgStrokeRadialGradient is bugged so this is ignored for now
-    local frameColor = Color(0,0,0,50)
+    local frameColor = TRANSPARENT_BLACK
 
     -- Find player
     local player = getPlayer()
 
-    local weapon_index = player.weaponIndexSelected;
-    local weapon = player.weapons[weapon_index];
+    local weapon_index = player.weaponIndexSelected
+    local weapon = player.weapons[weapon_index]
 
     local barEnd
     local frameRadius = barRadius + (barStrokeWidth / 2) + framePadding
@@ -52,19 +52,25 @@ function lucianoHUD_speedometer:draw()
     else barEnd = barStart + math.rad((player.speed / 1000) * 360)
     end
 
-    nvgBeginPath();
+    nvgBeginPath()
+    nvgArc(0, 0, barRadius, barStart, barEnd, barFillDrection)
+    nvgStrokeWidth(barStrokeWidth + 20)
+    nvgStrokeColor(BLACK)
+    nvgStroke()
+
+    nvgBeginPath()
     nvgArc(0, 0, barRadius, barStart, barEnd, barFillDrection)
     nvgStrokeWidth(barStrokeWidth)
     nvgStrokeColor(WHITE)
     nvgStroke()
 
     -- Draw numbers
-    nvgFontSize(fontSize);
-    nvgTextAlign(NVG_ALIGN_CENTER, NVG_ALIGN_MIDDLE);
+    nvgBeginPath()
+    nvgTextAlign(NVG_ALIGN_CENTER, NVG_ALIGN_MIDDLE)
 
-    nvgFontBlur(0);
-    nvgFillColor(Color(255,255,255,255));
-    nvgFontFace(FONT_FACE)
-    nvgFontSize(30)
-    nvgText(0, 0, math.floor(player.speed));
+    nvgFontBlur(0)
+    nvgFillColor(Color(255,255,255,255))
+    -- nvgFontFace(FONT_FACE)
+    nvgFontSize(50)
+    nvgText(0, 0, math.floor(player.speed))
 end
